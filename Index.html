@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gabriel Benavides | Portfólio</title>
+</head>
+
+<body>
+
+<script> //Script para mostrar apenas a aba selecionada
+    function mostrarSecao(id) {  
+    let secoes = document.querySelectorAll('.secao');
+    secoes.forEach(function(secao) {
+        secao.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+    }
+</script>
+
+<header><!//Navegação>
+    <div class="perfil">
+    <img src="foto.jpg" alt="Minha foto" class="foto">
+    <div class="info">
+    <h1>Gabriel Benavides da Silva</h1>
+        <nav>
+        <a onclick="mostrarSecao('sobre')">Sobre Mim</a>
+        <a onclick="mostrarSecao('formacao')">Formação</a>
+        <a onclick="mostrarSecao('portfolio')">Portfólio</a>
+        <a onclick="mostrarSecao('contato')">Contato</a>
+        </nav>
+    </div>
+    </div>
+</header>
+<section id="sobre"class="secao"><!//Sobremim>
+    <h2>🧑‍💼 Sobre mim</h2>
+    <p>
+    Meu nome é <strong>Gabriel Benavides da Silva</strong>, tenho <strong>24 anos</strong> e trabalho na área de <strong>tecnologia</strong>. Moro no interior de São Paulo e estou sempre em busca de crescimento pessoal e profissional.
+    </p>
+    <p>
+        Tenho grande interesse por tecnologia e gosto de entender como as coisas funcionam, sempre buscando aprender coisas novas e desenvolver minhas habilidades.
+    </p>
+    <p>
+        Nos meus momentos livres, gosto de viajar e conhecer novos lugares. Também tenho bastante interesse por áreas práticas, como mecânica e elétrica, que fazem parte dos meus hobbies e do meu dia a dia.
+    </p>
+    <p>
+        Me considero uma pessoa dedicada, curiosa e sempre pronta para novos desafios.
+    </p>
+</section>
+
+<section id ="formacao" class="secao"><!//formacao>
+    <h2>Formação</h2>
+    <ul>
+        <li>Ensino Médio com Técnico em Automação Industrial pelo IFSP - Campus Boituva (2017 - 2019)</li>
+        <li>Análise e Desenvolvimento de Sistemas pela UNINTER (EAD) (início em 2025)</li>
+        <li>Bolsista CNPq em pesquisa e ensino com foco em projetos elétricos (2019)</li>
+    </ul>
+    <h3>Idiomas</h3>
+    <ul>
+        <li>Inglês — Básico</li>
+        <li>Espanhol — Intermediário</li>
+    </ul>
+</section>
+
+<section id ="portfolio" class="secao"><!//Portfólio>
+<h2>Portfólio</h2>
+    <ul>
+        <li>
+            <strong>5S - Aplicativo em Power Apps</strong><br>
+            Desenvolvimento de um aplicativo para registro de apontamentos de 5S por setor, unificando lançamentos, facilitando cobranças e reduzindo etapas do processo. O projeto proporcionou uma economia de aproximadamente 40 horas semanais, além de aumentar o engajamento das equipes e melhorar a velocidade de resolução de problemas em 32,8%.
+        </li>
+        <li>
+            <strong>Aplicativo de Incidentes - Power Apps</strong><br>
+            Criação de um sistema para registro de eventos de segurança, como acidentes, quase-acidentes e incidentes. O projeto incluiu automações de fluxo e melhorias de processo, aumentando a eficiência na resolução de problemas e fortalecendo a gestão baseada em dados.
+        </li>
+        <li>
+            <strong>Automação de Cobranças de Atividades - Power Automate</strong><br>
+            Desenvolvimento de fluxos automatizados para acompanhamento de atividades e planos de ação. O sistema envia atualizações diárias das pendências por responsável, aplica regras de atraso e permite melhor visualização de gargalos e desempenho por setor.
+        </li>
+    </ul>
+</section>
+
+<section id="contato" class="secao"><!// Contato>
+    <h2>Contato</h2>
+    <form id="form-contato">
+    <label for="nome">Nome completo:</label><br>
+    <input type="text" id="nome" placeholder="Digite seu nome"><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" placeholder="Digite seu email"><br><br>
+    <label for="mensagem">Mensagem:</label><br>
+    <textarea id="mensagem" placeholder="Digite sua mensagem"></textarea><br><br>
+    <button type="submit">Enviar</button>
+    </form>
+    <p id="msg-sucesso" style="color: green; display: none;">
+        Mensagem enviada com sucesso!
+    </p>
+</section>
+
+<script><!//mostra seção selecionada>
+function mostrarSecao(id) {
+    let secoes = document.querySelectorAll('.secao');
+    secoes.forEach(function(secao) {
+        secao.style.display = 'none';
+    });
+
+    document.getElementById(id).style.display = 'block';
+}
+window.onload = function() {
+    mostrarSecao('sobre');
+}
+
+<!//VALIDAÇÃO DO FORMULÁRIO>
+document.getElementById("form-contato").addEventListener("submit", function(e) {
+    e.preventDefault(); // impede envio
+
+    let nome = document.getElementById("nome").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mensagem = document.getElementById("mensagem").value.trim();
+
+    if (nome === "" || email === "" || mensagem === "") {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    // Validação do email
+    if (!email.includes("@") || !email.includes(".")) {
+        alert("Digite um e-mail válido!");
+        return;
+    }
+
+    // limpa os campos
+    document.getElementById("form-contato").reset();
+
+    // mostra mensagem
+    document.getElementById("msg-sucesso").style.display = "block";
+});
+</script>
+
+</body>
+
+</html>
